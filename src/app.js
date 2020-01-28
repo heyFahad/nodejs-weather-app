@@ -3,26 +3,37 @@ const express = require("express");
 const app = express();
 
 app.get("", (req, res) => {
-  res.send("Hello express!");
+  res.send("<h1>Weather</h1>");
 });
 
 app.get("/help", (req, res) => {
-  res.send("Help page");
+  res.send([
+    {
+      name: "Fahad"
+    },
+    {
+      name: "Javed"
+    }
+  ]);
 });
 
 //
-// Goal: Setup two new routes
+// Goal: Update routes
 //
-// 1. Setup an about route and render a page title
-// 2. Setup a weather route and render a page title
+// 1. Setup about route to render a title with HTML
+// 2. Setup a weather route to send back JSON
+//    - Object with forecast and location strings
 // 3. Test your work by visiting both in the browser
 
 app.get("/about", (req, res) => {
-  res.send("About");
+  res.send("<h1>About</h1>");
 });
 
 app.get("/weather", (req, res) => {
-  res.send("Your weather");
+  res.send({
+    forecast: "It is snowing",
+    location: "Abbottabad"
+  });
 });
 
 app.listen(3000, () => {
