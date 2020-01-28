@@ -1,41 +1,33 @@
-const express = require("express");
+const express = require('express');
 
 const app = express();
 
-app.get("", (req, res) => {
-  res.send("<h1>Weather</h1>");
+app.get('', (req, res) => {
+  res.send('<h1>Weather</h1>');
 });
 
-app.get("/help", (req, res) => {
+app.get('/help', (req, res) => {
   res.send([
     {
-      name: "Fahad"
+      name: 'Fahad'
     },
     {
-      name: "Javed"
+      name: 'Javed'
     }
   ]);
 });
 
-//
-// Goal: Update routes
-//
-// 1. Setup about route to render a title with HTML
-// 2. Setup a weather route to send back JSON
-//    - Object with forecast and location strings
-// 3. Test your work by visiting both in the browser
-
-app.get("/about", (req, res) => {
-  res.send("<h1>About</h1>");
+app.get('/about', (req, res) => {
+  res.send('<h1>About</h1>');
 });
 
-app.get("/weather", (req, res) => {
+app.get('/weather', (req, res) => {
   res.send({
-    forecast: "It is snowing",
-    location: "Abbottabad"
+    forecast: 'It is snowing',
+    location: 'Abbottabad'
   });
 });
 
 app.listen(3000, () => {
-  console.log("Server is up on port 3000");
+  console.log('Server is up on port 3000');
 });
