@@ -39,22 +39,40 @@ app.get('/help', (req, res) => {
   });
 });
 
+//
+// Goal: Update weather endpoint to accept address
+//
+// 1. No address? Send back an error message
+// 2.Address? Send back the static JSON
+//   - Add address property onto JSON which returns the provided address
+// 3. Test /weather and /weather?address=philadelphia
+
 app.get('/weather', (req, res) => {
-  res.send({
+  if (!req.query.address) {
+    return res.send({
+      error: 'You must provide an address!'
+    });
+  }
+
+  return res.send({
     forecast: 'It is snowing',
-    location: 'Abbottabad'
+    location: 'Abbottabad',
+    address: req.query.address
   });
 });
 
-//
-// Goal: Create and render a 404 page with handlebars
-//
-// 1. Setup the template to render the header and footer
-// 2. Setup the template to render an error message in a paragraph
-// 3. Render the template for both 404 routes
-//    - Page not found
-//    - Help article not found
-// 4. Test your work. Visit /what and /help/units
+app.get('/products', (req, res) => {
+  if (!req.query.search) {
+    return res.send({
+      error: 'You must provide a search term'
+    });
+  }
+
+  console.log(req.query.search);
+  return res.send({
+    products: []
+  });
+});
 
 app.get('/help/*', (req, res) => {
   res.render('404', {
