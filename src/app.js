@@ -41,14 +41,6 @@ app.get('/help', (req, res) => {
   });
 });
 
-//
-// Goal: Wire up /weather
-//
-// 1. Require geocode/forecast into app.js
-// 2. Use the address to geocode
-// 3. Use the coordinates to get forecast
-// 4. Send back the real forecast and location
-
 app.get('/weather', (req, res) => {
   const { address } = req.query;
   if (!address) {
